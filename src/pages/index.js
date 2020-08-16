@@ -95,21 +95,23 @@ const IndexPage = () => {
               <Text fontWeight="bold" fontSize="4xl" textAlign="center" mb="6">
                 Try it on your website now
               </Text>
-              <Flex align="flex-end">
-                <FormControl flex="1" mr="3">
-                  <FormLabel htmlFor="url">Your website URL</FormLabel>
-                  <Input
-                    id="url"
-                    type="text"
-                    name="url"
-                    size="lg"
-                    placeholder="example.com"
-                  />
-                </FormControl>
-                <Button variantColor="purple" size="lg">
-                  Try free
-                </Button>
-              </Flex>
+              <form action="/pricing" method="GET">
+                <Flex align="flex-end">
+                  <FormControl flex="1" mr="3">
+                    <FormLabel htmlFor="url">Your website URL</FormLabel>
+                    <Input
+                      id="url"
+                      type="text"
+                      name="url"
+                      size="lg"
+                      placeholder="example.com"
+                    />
+                  </FormControl>
+                  <Button variantColor="purple" size="lg" type="submit">
+                    Try free
+                  </Button>
+                </Flex>
+              </form>
             </Card>
           </Box>
         </SimpleGrid>

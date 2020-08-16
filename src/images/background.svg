@@ -6,7 +6,7 @@
       >
         <mask
           id="mask0"
-          mask-type="alpha"
+          maskType="alpha"
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -55,7 +55,7 @@
           />
           <mask
             id="mask1"
-            mask-type="alpha"
+            maskType="alpha"
             maskUnits="userSpaceOnUse"
             x="696"
             y="244"
@@ -4873,7 +4873,7 @@
           />
           <mask
             id="mask2"
-            mask-type="alpha"
+            maskType="alpha"
             maskUnits="userSpaceOnUse"
             x="298"
             y="604"
@@ -6505,7 +6505,7 @@
           />
           <mask
             id="mask3"
-            mask-type="alpha"
+            maskType="alpha"
             maskUnits="userSpaceOnUse"
             x="273"
             y="305"
@@ -7735,7 +7735,7 @@
           />
           <mask
             id="mask4"
-            mask-type="alpha"
+            maskType="alpha"
             maskUnits="userSpaceOnUse"
             x="656"
             y="583"
@@ -11935,7 +11935,7 @@
           />
           <mask
             id="mask5"
-            mask-type="alpha"
+            maskType="alpha"
             maskUnits="userSpaceOnUse"
             x="865"
             y="98"
@@ -15469,7 +15469,7 @@
           />
           <mask
             id="mask6"
-            mask-type="alpha"
+            maskType="alpha"
             maskUnits="userSpaceOnUse"
             x="996"
             y="420"
@@ -16075,7 +16075,7 @@
           />
           <mask
             id="mask7"
-            mask-type="alpha"
+            maskType="alpha"
             maskUnits="userSpaceOnUse"
             x="1119"
             y="595"

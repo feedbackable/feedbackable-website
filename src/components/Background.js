@@ -13,7 +13,7 @@ const Background = props => {
       paddingBottom="100%"
       overflow="hidden"
       css={{
-        svg: {
+        img: {
           position: "absolute",
           left: 0,
           top: 0,
@@ -23,7 +23,7 @@ const Background = props => {
       }}
       {...props}
     >
-      <BackgroundSVG />
+      <img src={BackgroundSVG} />
     </Box>
   )
 }
