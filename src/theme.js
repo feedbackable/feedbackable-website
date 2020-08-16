@@ -1,0 +1,75 @@
+import { theme } from "@chakra-ui/core"
+
+// Let's say you want to add custom colors
+const customTheme = {
+  ...theme,
+  fonts: {
+    body: `"Cabin", apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
+    heading: `"Cabin", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
+  },
+  colors: {
+    ...theme.colors,
+    purple: {
+      50: "#ECE7F8",
+      100: "#CEC6ED",
+      200: "#ADA2E2",
+      300: "#8C7CD8",
+      400: "#765AD6",
+      500: "#5546C6",
+      600: "#4B41C0",
+      700: "#3C39B8",
+      800: "#2B33B0",
+      900: "#0228A2",
+    },
+    pink: {
+      50: "#F6E3F0",
+      100: "#E8B9DC",
+      200: "#D98AC6",
+      300: "#DA49B4",
+      400: "#BF2E9F",
+      500: "#B12A91",
+      600: "#A5278D",
+      700: "#932288",
+      800: "#851F82",
+      900: "#691878",
+    },
+    aqua: {
+      50: "#E5FBFB",
+      100: "#BEF5F5",
+      200: "#77F2F1",
+      300: "#71E8EC",
+      400: "#66E1E8",
+      500: "#62DAE6",
+      600: "#5AC9D3",
+      700: "#4FB2B8",
+      800: "#469EA1",
+      900: "#347975",
+    },
+    teal: {
+      50: "#E6F5F7",
+      100: "#C1E8ED",
+      200: "#9DD8E1",
+      300: "#7FC9D5",
+      400: "#55BFCE",
+      500: "#6AB3C4",
+      600: "#61A3B1",
+      700: "#568E98",
+      800: "#4D7B82",
+      900: "#3A585A",
+    },
+    yellow: {
+      50: "#FEFCE8",
+      100: "#FBF6C7",
+      200: "#FAF1A3",
+      300: "#F7EA81",
+      400: "#F7E84D",
+      500: "#F2E355",
+      600: "#F0D14F",
+      700: "#EBBA45",
+      800: "#E7A53C",
+      900: "#E17E2F",
+    },
+  },
+}
+
+export default customTheme
