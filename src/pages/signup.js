@@ -2,17 +2,13 @@ import React from "react"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
-import { Link, graphql, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
 
 import Container from "../components/Container"
 import {
-  SimpleGrid,
   Text,
   Box,
   Flex,
   Button,
-  Stack,
   Input,
   FormControl,
   FormLabel,

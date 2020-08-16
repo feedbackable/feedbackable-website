@@ -16,7 +16,6 @@ import {
   FormControl,
   FormLabel,
   Stack,
-  Image,
   Grid,
 } from "@chakra-ui/core"
 import Background from "../components/Background"

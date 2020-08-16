@@ -23,7 +23,7 @@ const Background = props => {
       }}
       {...props}
     >
-      <img src={BackgroundSVG} />
+      <img src={BackgroundSVG} alt="" />
     </Box>
   )
 }

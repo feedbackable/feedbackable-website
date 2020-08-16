@@ -2,8 +2,7 @@ import React from "react"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
-import { Link, graphql, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
+import { Link } from "gatsby"
 
 import Container from "../components/Container"
 import { SimpleGrid, Text, Box, Flex, Button, Stack } from "@chakra-ui/core"
