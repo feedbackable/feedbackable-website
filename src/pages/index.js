@@ -92,9 +92,18 @@ const IndexPage = () => {
           <Box>
             <Card maxW="md" mx="auto" px="4" py="6">
               <Text fontWeight="bold" fontSize="4xl" textAlign="center" mb="6">
-                Try it on your website now
+                Pricing &amp; plans
               </Text>
-              <form action="/pricing" method="GET">
+              <Text mb="6" fontSize="lg" textAlign="center">
+                Choose a plan to fit your needs
+              </Text>
+              <Flex justifyContent="center">
+                <Button as={Link} to="/" variantColor="pink" size="lg">
+                  View pricing
+                </Button>
+              </Flex>
+
+              {/*<form action="/pricing" method="GET">
                 <Flex align="flex-end">
                   <FormControl flex="1" mr="3">
                     <FormLabel htmlFor="url">Your website URL</FormLabel>
@@ -110,7 +119,7 @@ const IndexPage = () => {
                     Try free
                   </Button>
                 </Flex>
-              </form>
+              </form>*/}
             </Card>
           </Box>
         </SimpleGrid>
