@@ -48,6 +48,15 @@ const PricingCard = ({ price, name, features, isFeatured = false }) => {
             size={isFeatured ? "lg" : "md"}
             as={Link}
             to="/signup"
+            className={`select-plan-${name.toLowerCase()}`}
+            data-click-event={`select-plan-${name.toLowerCase()}`}
+            onClick={() => {
+              window.localStorage.setItem("selected-plan", name)
+              window.localStorage.setItem(
+                "selected-price",
+                price.replace(/[^\d]/, "")
+              )
+            }}
           >
             Start a free trial
           </Button>

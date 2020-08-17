@@ -79,6 +79,12 @@ const SignupPage = () => {
     }
 
     setFormComplete(true)
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: "subscribe",
+        conversionValue: window.localStorage.getItem("selected-price"),
+      })
+    }
   }
 
   return (
@@ -132,6 +138,7 @@ const SignupPage = () => {
                         mr="2"
                         value={formData.email}
                         onChange={handleChange}
+                        fontFamily="base"
                       />
 
                       <Button

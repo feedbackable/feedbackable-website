@@ -11,7 +11,7 @@ const Header = () => (
         justifyContent={["space-between", null, "flex-start"]}
       >
         <Box>
-          <Link to="/">
+          <Link to="/" className="header-brand">
             <Flex as="span" align="center">
               <Box as="span" pr="4">
                 <svg
@@ -54,6 +54,8 @@ const Header = () => (
               variant="link"
               variantColor="purple"
               fontWeight="normal"
+              className="header-pricing"
+              data-click-event="header-pricing"
             >
               Pricing
             </Button>

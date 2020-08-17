@@ -11,10 +11,10 @@ import {
   Text,
   Box,
   Flex,
-  Input,
+  //Input,
   Button,
-  FormControl,
-  FormLabel,
+  //FormControl,
+  //FormLabel,
   Stack,
   Grid,
 } from "@chakra-ui/core"
@@ -78,12 +78,21 @@ const IndexPage = () => {
                   variant="outline"
                   variantColor="purple"
                   size="lg"
+                  className="hero-cta-secondary"
+                  data-click-event="hero-cta-secondary"
                 >
                   Try it free
                 </Button>
               </Box>
               <Box borderRadius="md" bg="white" p="2">
-                <Button as={Link} to="/pricing" variantColor="purple" size="lg">
+                <Button
+                  as={Link}
+                  to="/pricing"
+                  variantColor="purple"
+                  size="lg"
+                  className="hero-cta-primary"
+                  data-click-event="hero-cta-primary"
+                >
                   View pricing
                 </Button>
               </Box>
@@ -98,7 +107,14 @@ const IndexPage = () => {
                 Choose a plan to fit your needs
               </Text>
               <Flex justifyContent="center">
-                <Button as={Link} to="/pricing" variantColor="pink" size="lg">
+                <Button
+                  as={Link}
+                  to="/pricing"
+                  variantColor="pink"
+                  size="lg"
+                  className="hero-cta-alt"
+                  data-click-event="hero-cta-alt"
+                >
                   View pricing
                 </Button>
               </Flex>
@@ -223,6 +239,8 @@ const IndexPage = () => {
                 variant="link"
                 variantColor="purple"
                 fontWeight="normal"
+                className="index-features-1"
+                data-click-event="index-features-1"
               >
                 View pricing
               </Button>
@@ -244,6 +262,8 @@ const IndexPage = () => {
                 variant="link"
                 variantColor="purple"
                 fontWeight="normal"
+                className="index-features-2"
+                data-click-event="index-features-2"
               >
                 View pricing
               </Button>
@@ -265,6 +285,8 @@ const IndexPage = () => {
                 variant="link"
                 variantColor="purple"
                 fontWeight="normal"
+                className="index-features-3"
+                data-click-event="index-features-3"
               >
                 View pricing
               </Button>
