@@ -98,7 +98,7 @@ const IndexPage = () => {
                 Choose a plan to fit your needs
               </Text>
               <Flex justifyContent="center">
-                <Button as={Link} to="/" variantColor="pink" size="lg">
+                <Button as={Link} to="/pricing" variantColor="pink" size="lg">
                   View pricing
                 </Button>
               </Flex>
