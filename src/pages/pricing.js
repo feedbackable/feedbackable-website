@@ -128,17 +128,19 @@ const PricingPage = () => {
             />
           </Box>
         </SimpleGrid>
-        <Box mt="8">
-          <Text fontSize="2xl" textAlign="center" mb="3" fontWeight="medium">
-            Don’t see your plan here? Have a larger team?
-          </Text>
-          <Text textAlign="center" fontSize="lg">
-            If you need a plan with something more,{" "}
-            <Text as="a" href="mailto:seb@feedbackable.io" color="purple.400">
-              contact Seb
-            </Text>{" "}
-            to get a plan just for you.
-          </Text>
+        <Box mt="8" maxW="2xl" mx="auto">
+          <Card p="6">
+            <Text fontSize="2xl" textAlign="center" mb="3" fontWeight="medium">
+              Don’t see your plan here? Have a larger team?
+            </Text>
+            <Text textAlign="center" fontSize="lg">
+              If you need a plan with something more,{" "}
+              <Text as="a" href="mailto:seb@feedbackable.io" color="purple.400">
+                contact Seb
+              </Text>{" "}
+              to get a plan just for you.
+            </Text>
+          </Card>
         </Box>
       </Container>
     </Layout>
