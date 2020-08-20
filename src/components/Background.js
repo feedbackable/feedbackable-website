@@ -12,6 +12,7 @@ const Background = props => {
       width="100%"
       paddingBottom="100%"
       overflow="hidden"
+      opacity="0.5"
       css={{
         img: {
           position: "absolute",

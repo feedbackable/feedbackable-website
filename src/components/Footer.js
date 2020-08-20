@@ -14,9 +14,9 @@ export default function Footer() {
           <Box>
             <Text fontSize="sm">
               Made with{" "}
-              <span role="img" aria-label="love heart emoji">
+              <Text as="span" role="img" aria-label="love heart emoji" mr="2">
                 ❤️
-              </span>{" "}
+              </Text>{" "}
               by{" "}
               <Text
                 as="a"

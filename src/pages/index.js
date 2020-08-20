@@ -20,6 +20,8 @@ import {
 } from "@chakra-ui/core"
 import Background from "../components/Background"
 import Card from "../components/Card"
+import { MdAdd, MdShare } from "react-icons/md"
+import { GoCommentDiscussion } from "react-icons/go"
 
 const CardDot = ({ alignment, ...props }) => {
   return (
@@ -65,7 +67,7 @@ const IndexPage = () => {
             <Text fontSize="4xl" color="purple.400" mb="6" fontWeight="medium">
               The feedback tool for web &amp; content
             </Text>
-            <Text fontSize="xl">
+            <Text fontSize={["xl", null, "2xl"]}>
               Get feedback & annotations from your team or client, directly on
               the website. Say goodbye to email chains, messages &amp; word
               documents.
@@ -141,11 +143,31 @@ const IndexPage = () => {
         </SimpleGrid>
       </Container>
       <Container py={[10, null, 20]}>
+        <Box mb={[12, null, 32]}>
+          <Text
+            fontSize="4xl"
+            color="purple.400"
+            mb="6"
+            fontWeight="medium"
+            textAlign="center"
+          >
+            No more email chains, no complicated setup.
+          </Text>
+          <Text
+            fontSize={["xl", null, "2xl"]}
+            textAlign="center"
+            color="gray.700"
+          >
+            Enter your site URL or upload your design, and start receiving
+            feedback immediately.
+          </Text>
+        </Box>
         <Grid gridTemplateColumns={["100%", null, "1fr 4fr 1fr"]}>
           <Box position="relative" zIndex="2">
             <Card
               position="relative"
               p="3"
+              pr={[null, null, "5"]}
               marginTop={[null, null, "-2rem", "4rem"]}
               marginRight={[null, null, "-1rem"]}
             >
@@ -161,6 +183,7 @@ const IndexPage = () => {
             <Card
               position="relative"
               p="3"
+              pr={[null, null, "5"]}
               marginRight={[null, null, "-2rem"]}
               marginTop={[null, null, "1rem", "8rem"]}
             >
@@ -188,6 +211,7 @@ const IndexPage = () => {
             <Card
               position="relative"
               p="3"
+              pl={[null, null, "5"]}
               marginLeft={[null, null, "-2rem"]}
               marginTop={[null, null, "-4rem", "2rem"]}
             >
@@ -204,6 +228,7 @@ const IndexPage = () => {
             <Card
               position="relative"
               p="3"
+              pl={[null, null, "5"]}
               marginTop={[null, null, "2rem", "6rem"]}
               marginLeft={[null, null, "-4rem"]}
             >
@@ -222,8 +247,13 @@ const IndexPage = () => {
       </Container>
       <Container py={[10, null, 20]}>
         <SimpleGrid columns={[1, null, 3]} spacing="10">
-          <Box>
-            <Text fontSize="xl" color="purple.400" mb="4" textAlign="center">
+          <Card p="4" bg="white">
+            <Text
+              fontSize={["xl", null, "2xl"]}
+              color="purple.400"
+              mb="4"
+              textAlign="center"
+            >
               Organised
             </Text>
             <Text>
@@ -245,9 +275,14 @@ const IndexPage = () => {
                 View pricing
               </Button>
             </Box>
-          </Box>
-          <Box>
-            <Text fontSize="xl" color="purple.400" mb="4" textAlign="center">
+          </Card>
+          <Card p="4" bg="white">
+            <Text
+              fontSize={["xl", null, "2xl"]}
+              color="purple.400"
+              mb="4"
+              textAlign="center"
+            >
               Simple
             </Text>
             <Text>
@@ -268,9 +303,14 @@ const IndexPage = () => {
                 View pricing
               </Button>
             </Box>
-          </Box>
-          <Box>
-            <Text fontSize="xl" color="purple.400" mb="4" textAlign="center">
+          </Card>
+          <Card p="4" bg="white">
+            <Text
+              fontSize={["xl", null, "2xl"]}
+              color="purple.400"
+              mb="4"
+              textAlign="center"
+            >
               Collaborative
             </Text>
             <Text>
@@ -291,7 +331,97 @@ const IndexPage = () => {
                 View pricing
               </Button>
             </Box>
-          </Box>
+          </Card>
+        </SimpleGrid>
+      </Container>
+      <Container py={[10, null, 20]}>
+        <Text
+          fontSize="4xl"
+          color="purple.400"
+          mb="20"
+          fontWeight="medium"
+          textAlign="center"
+        >
+          How it works: collect &amp; share design feedback easily
+        </Text>
+        <SimpleGrid columns={[1, null, 3]} spacing="10">
+          <Card p="4" bg="white" borderColor="cyan.500">
+            <Text fontSize="2xl" mb="6" display="flex" alignItems="center">
+              <Box
+                as="span"
+                rounded="full"
+                bg="cyan.400"
+                width="3rem"
+                minWidth="3rem"
+                height="3rem"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                color="white"
+                fontSize="2xl"
+                fontWeight="bold"
+                mr="3"
+              >
+                <MdAdd />
+              </Box>{" "}
+              Add your URL or design
+            </Text>
+            <Text fontSize="lg">
+              Enter your site URL, or upload your design.
+            </Text>
+          </Card>
+          <Card p="4" bg="white" borderColor="cyan.600">
+            <Text fontSize="2xl" mb="6" display="flex" alignItems="center">
+              <Box
+                as="span"
+                rounded="full"
+                bg="cyan.400"
+                width="3rem"
+                minWidth="3rem"
+                height="3rem"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                color="white"
+                fontSize="2xl"
+                fontWeight="bold"
+                mr="3"
+              >
+                <MdShare />
+              </Box>{" "}
+              Share your Feedbackable URL or invite users
+            </Text>
+            <Text fontSize="lg">
+              Share your collaborative Feedbackable URL, or invite users by
+              email address.
+            </Text>
+          </Card>
+          <Card p="4" bg="white" borderColor="cyan.700">
+            <Text fontSize="2xl" mb="6" display="flex" alignItems="center">
+              <Box
+                as="span"
+                rounded="full"
+                bg="cyan.400"
+                width="3rem"
+                minWidth="3rem"
+                height="3rem"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                color="white"
+                fontSize="2xl"
+                fontWeight="bold"
+                mr="3"
+              >
+                <GoCommentDiscussion />
+              </Box>{" "}
+              Collect design feedback
+            </Text>
+            <Text fontSize="lg">
+              Collect feedback from clients, designers &amp; QA. Easily track
+              all your feedback in one place.
+            </Text>
+          </Card>
         </SimpleGrid>
       </Container>
     </Layout>
