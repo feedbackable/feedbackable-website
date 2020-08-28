@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Flex, Text } from "@chakra-ui/core"
+import { Box, Flex, Text, Stack } from "@chakra-ui/core"
 import { Link } from "gatsby"
 import Container from "./Container"
 
@@ -9,7 +9,16 @@ export default function Footer() {
       <Container>
         <Flex justifyContent="space-between" flexWrap="wrap">
           <Box>
-            <Link to="/">Feedbackable.io</Link>
+            <Stack isInline spacing="5">
+              <Box>
+                <Link to="/">Feedbackable.io</Link>
+              </Box>
+              <Box>
+                <Text as={Link} to="/contact" textDecoration="underline">
+                  Contact
+                </Text>
+              </Box>
+            </Stack>
           </Box>
           <Box>
             <Text fontSize="sm">
