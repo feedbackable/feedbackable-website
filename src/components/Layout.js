@@ -5,6 +5,7 @@ import customTheme from "../theme"
 
 import Header from "./Header"
 import Footer from "./Footer"
+import ExitPopup from "./ExitSurvey/ExitPopup"
 
 const Layout = ({ children }) => {
   return (
@@ -17,6 +18,8 @@ const Layout = ({ children }) => {
             {children}
           </Box>
           <Footer />
+
+          <ExitPopup />
         </LightMode>
       </ThemeProvider>
     </>
