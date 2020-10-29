@@ -64,9 +64,15 @@ const IndexPage = () => {
       <Container py={[10, null, 20]}>
         <SimpleGrid columns={[1, null, 2]} spacing="10">
           <Box>
-            <Text fontSize="4xl" color="purple.400" mb="6" fontWeight="medium">
-              The feedback tool for web &amp; content
-            </Text>
+            <Box mb="6">
+              <Text fontSize="4xl" color="purple.400" fontWeight="medium">
+                Good clients send screenshots.{" "}
+              </Text>
+              <Text fontSize="4xl" color="pink.600" fontWeight="bold">
+                Great clients use Feedbackable
+              </Text>
+            </Box>
+
             <Text fontSize={["xl", null, "2xl"]}>
               Get feedback & annotations from your team or client, directly on
               the website. Say goodbye to email chains, messages &amp; word
