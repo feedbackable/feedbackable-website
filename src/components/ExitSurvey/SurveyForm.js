@@ -10,7 +10,7 @@ import {
   Input,
   FormErrorMessage,
   Flex,
-} from "@chakra-ui/core"
+} from "@chakra-ui/react"
 import { useFormState } from "react-use-form-state"
 import to from "../../lib/to"
 import checkStatus from "../../lib/checkStatus"

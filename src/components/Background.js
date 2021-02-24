@@ -1,7 +1,5 @@
-/** @jsx jsx */
-import { jsx } from "@emotion/core"
-
-import { Box } from "@chakra-ui/core"
+import React from 'react';
+import { Box } from "@chakra-ui/react"
 import BackgroundSVG from "../images/background.svg"
 
 const Background = props => {
@@ -13,7 +11,7 @@ const Background = props => {
       paddingBottom="100%"
       overflow="hidden"
       opacity="0.5"
-      css={{
+      sx={{
         img: {
           position: "absolute",
           left: 0,

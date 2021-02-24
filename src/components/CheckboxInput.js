@@ -5,7 +5,7 @@ import {
   VisuallyHidden,
   ControlBox,
   Icon,
-} from "@chakra-ui/core"
+} from "@chakra-ui/react"
 
 function CheckboxInput({ label, ...props }) {
   return (

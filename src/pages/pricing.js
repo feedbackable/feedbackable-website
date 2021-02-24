@@ -4,8 +4,7 @@ import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import { Link } from "gatsby"
 
-import Container from "../components/Container"
-import { SimpleGrid, Text, Box, Flex, Button, Stack } from "@chakra-ui/core"
+import { SimpleGrid, Text, Box, Flex, Button, Stack, Container } from "@chakra-ui/react"
 import Background from "../components/Background"
 import Card from "../components/Card"
 

@@ -2,9 +2,8 @@ import React from "react"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
-import Container from "../components/Container"
 import Card from "../components/Card"
-import { Text } from "@chakra-ui/core"
+import { Text, Container } from "@chakra-ui/react"
 import Background from "../components/Background"
 
 const NotFoundPage = () => (

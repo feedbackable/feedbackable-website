@@ -14,7 +14,7 @@ import {
   Stack,
   Heading,
   Text,
-} from "@chakra-ui/core"
+} from "@chakra-ui/react"
 
 function ExitPopup() {
   const [formPage, setFormPage] = useState(0)

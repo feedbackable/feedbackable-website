@@ -1,76 +1,69 @@
-import { theme } from "@chakra-ui/core"
+// 1. Import the extendTheme function
+import { extendTheme } from "@chakra-ui/react";
 
-// Let's say you want to add custom colors
-const customTheme = {
-  ...theme,
+const config = {
+  initialColorMode: "light",
+  useSystemColorMode: false,
+};
+
+// 2. Extend the theme to include custom colors, fonts, etc
+const colors = {
+  purple: {
+    50: "#E5D0F7",
+    100: "#DDC1F4",
+    200: "#D2ACF0",
+    300: "#C391EB",
+    400: "#AE6CE5",
+    500: "#943BDC",
+    600: "#7D34B9",
+    700: "#6A3297",
+    800: "#5A2F7C",
+    900: "#4C2B66",
+  },
+  blue: {
+    50: "#D9D3F7",
+    100: "#CCC5F5",
+    200: "#BBB1F1",
+    300: "#A497EC",
+    400: "#8574E6",
+    500: "#5D46DE",
+    600: "#4C37C1",
+    700: "#44359F",
+    800: "#3D3182",
+    900: "#372D6B",
+  }
+};
+
+const components = {
+  Container: {
+    baseStyle: {
+      px: '2',
+      maxW: 'container.xl'
+    }
+  }
+  // Button: {
+  //   // 1. We can update the base styles
+  //   baseStyle: {
+  //     fontWeight: "normal", // Normally, it is "semibold"
+  //   },
+  //   // 3. We can add a new visual variant
+  //   variants: {
+      
+  //   },
+  // },
+};
+
+const theme = extendTheme({
+  config,
   fonts: {
-    base: `apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-    body: `"Cabin", apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
-    heading: `"Cabin", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
+    body:
+      "'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    heading:
+      "'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    // mono: "Menlo, monospace",
   },
-  colors: {
-    ...theme.colors,
-    purple: {
-      50: "#ECE7F8",
-      100: "#CEC6ED",
-      200: "#ADA2E2",
-      300: "#8C7CD8",
-      400: "#765AD6",
-      500: "#5546C6",
-      600: "#4B41C0",
-      700: "#3C39B8",
-      800: "#2B33B0",
-      900: "#0228A2",
-    },
-    pink: {
-      50: "#F6E3F0",
-      100: "#E8B9DC",
-      200: "#D98AC6",
-      300: "#DA49B4",
-      400: "#BF2E9F",
-      500: "#B12A91",
-      600: "#A5278D",
-      700: "#932288",
-      800: "#851F82",
-      900: "#691878",
-    },
-    aqua: {
-      50: "#E5FBFB",
-      100: "#BEF5F5",
-      200: "#77F2F1",
-      300: "#71E8EC",
-      400: "#66E1E8",
-      500: "#62DAE6",
-      600: "#5AC9D3",
-      700: "#4FB2B8",
-      800: "#469EA1",
-      900: "#347975",
-    },
-    teal: {
-      50: "#E6F5F7",
-      100: "#C1E8ED",
-      200: "#9DD8E1",
-      300: "#7FC9D5",
-      400: "#55BFCE",
-      500: "#6AB3C4",
-      600: "#61A3B1",
-      700: "#568E98",
-      800: "#4D7B82",
-      900: "#3A585A",
-    },
-    yellow: {
-      50: "#FEFCE8",
-      100: "#FBF6C7",
-      200: "#FAF1A3",
-      300: "#F7EA81",
-      400: "#F7E84D",
-      500: "#F2E355",
-      600: "#F0D14F",
-      700: "#EBBA45",
-      800: "#E7A53C",
-      900: "#E17E2F",
-    },
-  },
-}
+  colors,
+  components,
+});
 
-export default customTheme
+export default theme;

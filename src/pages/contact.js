@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 
-import Container from "../components/Container"
-import { Text, Box, Heading, Stack } from "@chakra-ui/core"
+
+import { Text, Box, Heading, Stack, Container } from "@chakra-ui/react"
 import Background from "../components/Background"
 import Card from "../components/Card"
 

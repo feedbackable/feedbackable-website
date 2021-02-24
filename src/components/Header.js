@@ -1,7 +1,6 @@
 import React from "react"
-import { Box, Flex, Text, Stack, Button } from "@chakra-ui/core"
+import { Box, Flex, Text, Stack, Button, Container } from "@chakra-ui/react"
 import { Link } from "gatsby"
-import Container from "./Container"
 
 const Header = () => (
   <Box as="header" py="4">

@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { ThemeProvider, CSSReset, LightMode, Box } from "@chakra-ui/core"
+import { ThemeProvider, CSSReset, LightMode, Box } from "@chakra-ui/react"
 import customTheme from "../theme"
 
 import Header from "./Header"

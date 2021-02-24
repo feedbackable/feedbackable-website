@@ -1,7 +1,6 @@
 import React from "react"
-import { Box, Flex, Text, Stack } from "@chakra-ui/core"
+import { Box, Flex, Text, Stack, Container } from "@chakra-ui/react"
 import { Link } from "gatsby"
-import Container from "./Container"
 
 export default function Footer() {
   return (

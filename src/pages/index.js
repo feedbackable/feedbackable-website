@@ -5,8 +5,8 @@ import SEO from "../components/SEO"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 
-import Container from "../components/Container"
 import {
+  Container,
   SimpleGrid,
   Text,
   Box,
@@ -17,7 +17,7 @@ import {
   //FormLabel,
   Stack,
   Grid,
-} from "@chakra-ui/core"
+} from "@chakra-ui/react"
 import Background from "../components/Background"
 import Card from "../components/Card"
 import { MdAdd, MdShare } from "react-icons/md"

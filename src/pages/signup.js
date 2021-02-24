@@ -3,8 +3,8 @@ import React, { useState, useCallback } from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 
-import Container from "../components/Container"
 import {
+  Container,
   Text,
   Box,
   Flex,
@@ -14,7 +14,7 @@ import {
   FormErrorMessage,
   FormHelperText,
   FormLabel,
-} from "@chakra-ui/core"
+} from "@chakra-ui/react"
 import Background from "../components/Background"
 import Card from "../components/Card"
 
