@@ -1,2 +1,8 @@
 [build]
    functions = "functions"
+
+[[redirects]]
+  from = "/signup"
+  to = "https://feedbackable.app/auth/register"
+  status = 301
+  force = true
