@@ -47,6 +47,7 @@ const callToActions = [
     title: "Login",
     href: "https://feedbackable.app",
     variant: "link",
+    colorScheme: "purple",
   },
 ]
 
@@ -62,6 +63,7 @@ const Menu = ({ onClose = () => {} }) => {
       top="0"
       left="0"
       p={[8, null, null, 0]}
+      pt="16"
     >
       <Box
         position="absolute"
@@ -87,24 +89,38 @@ const Menu = ({ onClose = () => {} }) => {
       >
         <Stack spacing="4" direction={["column", null, null, "row"]}>
           {menuItems.map((item, index) => (
-            <Button key={index} as={Link} to={item.href} {...LinkButtonStyle}>
+            <Button
+              key={index}
+              as={Link}
+              to={item.href}
+              {...LinkButtonStyle}
+              onClick={onClose}
+            >
               {item.title}
             </Button>
           ))}
         </Stack>
         <Stack spacing="6" direction={["column", null, null, "row"]}>
-          {callToActions.map((item, index) => (
-            <Button
-              key={index}
-              as={item.href.match(/^https?:\/\//) ? "a" : Link}
-              to={item.href}
-              {...(item.variant === "link" && LinkButtonStyle)}
-              {...(item.variant === "outline" && OutlineButtonStyle)}
-              {...(item.variant === "solid" && SolidButtonStyle)}
-            >
-              {item.title}
-            </Button>
-          ))}
+          {callToActions.map((item, index) => {
+            const isExternal = item.href.match(/^https?:\/\//)
+            return (
+              <Button
+                key={index}
+                as={isExternal ? "a" : Link}
+                to={isExternal ? null : item.href}
+                href={isExternal ? item.href : null}
+                {...(item.variant === "link" && LinkButtonStyle)}
+                {...(item.variant === "outline" && OutlineButtonStyle)}
+                {...(item.variant === "solid" && SolidButtonStyle)}
+                {...(item.colorScheme
+                  ? { color: `${item.colorScheme}.500` }
+                  : {})}
+                onClick={onClose}
+              >
+                {item.title}
+              </Button>
+            )
+          })}
         </Stack>
       </Stack>
     </Box>
