@@ -62,7 +62,7 @@ function ExitPopup() {
         </ModalBody>
 
         <ModalFooter>
-          <Button variantColor="blue" onClick={onClose}>
+          <Button colorScheme="blue" onClick={onClose}>
             Close
           </Button>
         </ModalFooter>

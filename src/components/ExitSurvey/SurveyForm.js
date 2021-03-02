@@ -190,7 +190,7 @@ function SurveyForm({ setFormPage, onCloseRef }) {
           <Flex justifyContent="center">
             <Button
               isDisabled={!isFormValid()}
-              variantColor="purple"
+              colorScheme="purple"
               type="submit"
               isLoading={isLoading}
               loadingText="Saving..."

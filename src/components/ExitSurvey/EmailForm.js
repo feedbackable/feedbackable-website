@@ -119,7 +119,7 @@ function EmailForm({ setFormPage }) {
         </Stack>
         <Flex justifyContent="center" mt="5">
           <Button
-            variantColor="purple"
+            colorScheme="purple"
             type="submit"
             isLoading={isLoading}
             loadingText="Saving..."
