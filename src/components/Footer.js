@@ -17,8 +17,8 @@ export default function Footer() {
     <footer>
       <Box pb={[10, null, 20, 40]}>
         <Container>
-          <Flex>
-            <Box w={["16.66%"]}>
+          <Flex flexWrap="wrap">
+            <Box w={["100%", null, null, "16.66%"]} mb={[10, null, null, 0]}>
               <Box>
                 <Link to="/" className="header-brand">
                   <Flex as="span" align="center">
@@ -55,8 +55,8 @@ export default function Footer() {
                 </Link>
               </Box>
             </Box>
-            <Box w={["83.33%"]}>
-              <SimpleGrid columns={[3]}>
+            <Box w={["100%", null, null, "83.33%"]}>
+              <SimpleGrid columns={[2, null, null, 3]}>
                 <Box>
                   <Text as="h4" fontWeight="bold" mb="3">
                     Product
