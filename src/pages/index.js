@@ -15,13 +15,23 @@ import {
   Button,
   //FormControl,
   //FormLabel,
-  Stack,
+  VStack,
+  HStack,
   Grid,
+  AspectRatio,
+  Stack,
 } from "@chakra-ui/react"
-import Background from "../components/Background"
 import Card from "../components/Card"
 import { MdAdd, MdShare } from "react-icons/md"
 import { GoCommentDiscussion } from "react-icons/go"
+import HighlightText from "../components/HighlightText"
+import FooterCTA from "../components/FooterCTA"
+import {
+  OutlineButtonStyle,
+  SolidButtonStyle,
+} from "../components/ButtonStyles"
+
+import FeedbackableAppVideo from "../assets/feedbackable-app-video.webm"
 
 const CardDot = ({ alignment, ...props }) => {
   return (
@@ -29,7 +39,7 @@ const CardDot = ({ alignment, ...props }) => {
       rounded="full"
       w="5"
       h="5"
-      bg="pink.300"
+      bg="purple.300"
       position="absolute"
       left={alignment === "left" ? "-0.625rem" : null}
       right={alignment === "right" ? "-0.625rem" : null}
@@ -40,11 +50,40 @@ const CardDot = ({ alignment, ...props }) => {
     />
   )
 }
-
 const IndexPage = () => {
   const staticData = useStaticQuery(graphql`
-    query MyQuery {
+    query IndexPageQuery {
       screenshot: file(name: { eq: "app-screenshot" }) {
+        childImageSharp {
+          fluid(maxWidth: 1000) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      screenshotAddFeedback: file(name: { eq: "app-screenshot_add-feedback" }) {
+        childImageSharp {
+          fluid(maxWidth: 1000) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      screenshotAddProject: file(name: { eq: "app-screenshot_add-project" }) {
+        childImageSharp {
+          fluid(maxWidth: 1000) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      screenshotBoard: file(name: { eq: "app-screenshot_board" }) {
+        childImageSharp {
+          fluid(maxWidth: 1000) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      screenshotBoardFeedback: file(
+        name: { eq: "app-screenshot_board-feedback" }
+      ) {
         childImageSharp {
           fluid(maxWidth: 1000) {
             ...GatsbyImageSharpFluid
@@ -60,378 +99,465 @@ const IndexPage = () => {
         title="Feedbackable.io | The feedback tool for web & content"
         overrideTitleTemplate="true"
       />
-      <Background display={["none", null, "block"]} />
-      <Container py={[10, null, 20]}>
-        <SimpleGrid columns={[1, null, 2]} spacing="10">
-          <Box>
-            <Box mb="6">
-              <Text fontSize="4xl" color="purple.400" fontWeight="medium">
-                Good clients send screenshots.{" "}
-              </Text>
-              <Text fontSize="4xl" color="pink.600" fontWeight="bold">
-                Great clients use Feedbackable
-              </Text>
-            </Box>
 
-            <Text fontSize={["xl", null, "2xl"]}>
-              Get feedback & annotations from your team or client, directly on
-              the website. Say goodbye to email chains, messages &amp; word
-              documents.
-            </Text>
-            <Stack isInline mt="6">
-              <Box borderRadius="md" bg="white" p="2">
-                <Button
-                  as={Link}
-                  to="/pricing"
-                  variant="outline"
-                  variantColor="purple"
-                  size="lg"
-                  className="hero-cta-secondary"
-                  data-click-event="hero-cta-secondary"
+      <VStack
+        spacing={[10, null, 20, 40]}
+        py={[10, null, 20, 40]}
+        sx={{ "&>*": { minWidth: "100%" } }}
+      >
+        <section className="section-hero">
+          <Container maxW="container.lg">
+            <VStack spacing={[5, null, null, 8]}>
+              <Box textAlign="center" as="h1">
+                <Text
+                  as="span"
+                  fontSize={["4xl", null, "5xl"]}
+                  fontWeight="medium"
+                  color="gray.700"
+                  display="block"
                 >
-                  Try it free
-                </Button>
-              </Box>
-              <Box borderRadius="md" bg="white" p="2">
-                <Button
-                  as={Link}
-                  to="/pricing"
-                  variantColor="purple"
-                  size="lg"
-                  className="hero-cta-primary"
-                  data-click-event="hero-cta-primary"
-                >
-                  View pricing
-                </Button>
-              </Box>
-            </Stack>
-          </Box>
-          <Box>
-            <Card maxW="md" mx="auto" px="4" py="6">
-              <Text fontWeight="bold" fontSize="4xl" textAlign="center" mb="6">
-                Pricing &amp; plans
-              </Text>
-              <Text mb="6" fontSize="lg" textAlign="center">
-                Choose a plan to fit your needs
-              </Text>
-              <Flex justifyContent="center">
-                <Button
-                  as={Link}
-                  to="/pricing"
-                  variantColor="pink"
-                  size="lg"
-                  className="hero-cta-alt"
-                  data-click-event="hero-cta-alt"
-                >
-                  View pricing
-                </Button>
-              </Flex>
+                  Good clients send screenshots.{" "}
+                </Text>
 
-              {/*<form action="/pricing" method="GET">
-                <Flex align="flex-end">
-                  <FormControl flex="1" mr="3">
-                    <FormLabel htmlFor="url">Your website URL</FormLabel>
-                    <Input
-                      id="url"
-                      type="text"
-                      name="url"
-                      size="lg"
-                      placeholder="example.com"
-                    />
-                  </FormControl>
-                  <Button variantColor="purple" size="lg" type="submit">
-                    Try free
+                <HighlightText
+                  display="block"
+                  fontSize={["4xl", "6xl"]}
+                  fontWeight="bold"
+                >
+                  Great clients use Feedbackable.
+                </HighlightText>
+                {/* </Box> */}
+              </Box>
+              <Text fontSize={["xl", null, "2xl"]} textAlign="center">
+                Get feedback & annotations from your team or client, directly on
+                the website.
+                <br />
+                Say goodbye to email chains, messages &amp; word documents.
+              </Text>
+              <Stack
+                spacing={[3, null, 6]}
+                direction={["column", null, "row"]}
+                minW="100%"
+                justify="center"
+              >
+                <Box
+                  borderRadius="md"
+                  bg="white"
+                  p="2"
+                  minW={["100%", null, "auto"]}
+                >
+                  <Button
+                    as={Link}
+                    to="/signup"
+                    className="hero-cta-primary"
+                    data-click-event="hero-cta-primary"
+                    w="100%"
+                    {...SolidButtonStyle}
+                  >
+                    Try it free
                   </Button>
-                </Flex>
-              </form>*/}
-            </Card>
-          </Box>
-        </SimpleGrid>
-      </Container>
-      <Container py={[10, null, 20]}>
-        <Box mb={[12, null, 32]}>
-          <Text
-            fontSize="4xl"
-            color="purple.400"
-            mb="6"
-            fontWeight="medium"
-            textAlign="center"
-          >
-            No more email chains, no complicated setup.
-          </Text>
-          <Text
-            fontSize={["xl", null, "2xl"]}
-            textAlign="center"
-            color="gray.700"
-          >
-            Enter your site URL or upload your design, and start receiving
-            feedback immediately.
-          </Text>
-        </Box>
-        <Grid gridTemplateColumns={["100%", null, "1fr 4fr 1fr"]}>
-          <Box position="relative" zIndex="2">
-            <Card
-              position="relative"
-              p="3"
-              pr={[null, null, "5"]}
-              marginTop={[null, null, "-2rem", "4rem"]}
-              marginRight={[null, null, "-1rem"]}
-            >
-              <Text fontWeight="bold" mb="3">
-                Get started in seconds
-              </Text>
-              <Text>
-                No code snippets or browser extensions. Just start getting
-                feedback on your live site, dev site, staging site, anywhere!
-              </Text>
-              <CardDot alignment="right" />
-            </Card>
-            <Card
-              position="relative"
-              p="3"
-              pr={[null, null, "5"]}
-              marginRight={[null, null, "-2rem"]}
-              marginTop={[null, null, "1rem", "8rem"]}
-            >
-              <Text fontWeight="bold" mb="3">
-                Dedicated feedback board
-              </Text>
-              <Text>
-                Keep track of all your bugs and feedback in one place! Organise
-                your board how you want.
-              </Text>
-              <CardDot alignment="right" />
-            </Card>
-          </Box>
-          <Box position="relative" zIndex="1">
-            <Box
-              rounded="lg"
-              overflow="hidden"
-              border="1px solid"
-              borderColor="pink.300"
-            >
-              <Img fluid={staticData.screenshot.childImageSharp.fluid} />
-            </Box>
-          </Box>
-          <Box position="relative" zIndex="2">
-            <Card
-              position="relative"
-              p="3"
-              pl={[null, null, "5"]}
-              marginLeft={[null, null, "-2rem"]}
-              marginTop={[null, null, "-4rem", "2rem"]}
-            >
-              <Text fontWeight="bold" mb="3">
-                Super simple feedback
-              </Text>
-              <Text>
-                It’s so easy, clients, designers & QA can leave feedback with
-                ease. Screenshots and browser data are recorded so you don’t
-                have to waste time asking questions!
-              </Text>
-              <CardDot alignment="left" />
-            </Card>
-            <Card
-              position="relative"
-              p="3"
-              pl={[null, null, "5"]}
-              marginTop={[null, null, "2rem", "6rem"]}
-              marginLeft={[null, null, "-4rem"]}
-            >
-              <Text fontWeight="bold" mb="3">
-                Keep the whole team on the same page
-              </Text>
-              <Text>
-                Say goodbye to email chains, word docs and messages. With
-                Feedbackable, your whole team can see the feedback, and clients
-                can even add items!
-              </Text>
-              <CardDot alignment="left" />
-            </Card>
-          </Box>
-        </Grid>
-      </Container>
-      <Container py={[10, null, 20]}>
-        <SimpleGrid columns={[1, null, 3]} spacing="10">
-          <Card p="4" bg="white">
-            <Text
-              fontSize={["xl", null, "2xl"]}
-              color="purple.400"
-              mb="4"
-              textAlign="center"
-            >
-              Organised
-            </Text>
-            <Text>
-              All your feedback and bug reports in one place. Stop chasing
-              emails, scribbled notes, text documents for the right feedback or
-              piece of copy. Organise all your feedback in one board. *Coming
-              soon: integrations!
-            </Text>
-            <Box mt="3">
-              <Button
-                as={Link}
-                to="/pricing"
-                variant="link"
-                variantColor="purple"
-                fontWeight="normal"
-                className="index-features-1"
-                data-click-event="index-features-1"
+                </Box>
+                <Box
+                  borderRadius="md"
+                  bg="white"
+                  p="2"
+                  minW={["100%", null, "auto"]}
+                >
+                  <Button
+                    as={Link}
+                    to="/pricing"
+                    className="hero-cta-secondary"
+                    data-click-event="hero-cta-secondary"
+                    w="100%"
+                    {...OutlineButtonStyle}
+                  >
+                    View pricing
+                  </Button>
+                </Box>
+              </Stack>
+            </VStack>
+          </Container>
+        </section>
+        <section className="section-video">
+          <Container maxW={["container.md", null, null, null, "container.lg"]}>
+            <VStack spacing="8">
+              <Text
+                fontSize="4xl"
+                fontWeight="medium"
+                textAlign="center"
+                as="h2"
               >
-                View pricing
-              </Button>
-            </Box>
-          </Card>
-          <Card p="4" bg="white">
-            <Text
-              fontSize={["xl", null, "2xl"]}
-              color="purple.400"
-              mb="4"
-              textAlign="center"
-            >
-              Simple
-            </Text>
-            <Text>
-              Zero click install! Simply enter your dev/staging/live site URL in
-              the app and start collecting and dealing with feedback and bug
-              reports in seconds. No code snippets, no browser extensions.
-            </Text>
-            <Box mt="3">
-              <Button
-                as={Link}
-                to="/pricing"
-                variant="link"
-                variantColor="purple"
-                fontWeight="normal"
-                className="index-features-2"
-                data-click-event="index-features-2"
+                Collect &amp; share design feedback easily
+              </Text>
+              <AspectRatio
+                ratio={16 / 12}
+                minW="100%"
+                overflow="hidden"
+                rounded="md"
               >
-                View pricing
-              </Button>
-            </Box>
-          </Card>
-          <Card p="4" bg="white">
-            <Text
-              fontSize={["xl", null, "2xl"]}
-              color="purple.400"
-              mb="4"
-              textAlign="center"
-            >
-              Collaborative
-            </Text>
-            <Text>
-              Work collaboratively with your development & design teams, with
-              private projects. Need feedback or bug reports from clients or
-              even users? Collect feedback from unlimited guests.
-            </Text>
-            <Box mt="3">
-              <Button
-                as={Link}
-                to="/pricing"
-                variant="link"
-                variantColor="purple"
-                fontWeight="normal"
-                className="index-features-3"
-                data-click-event="index-features-3"
+                <video autoPlay={true} muted={true} loop={true}>
+                  <source src={FeedbackableAppVideo} type="video/webm" />
+                </video>
+              </AspectRatio>
+              {/* <ReactPlayer playing url={["foo.webm", "foo.ogg"]} /> */}
+              {/* <AspectRatio ratio={16 / 9} minW="100%">
+                <Box bg="gray.100" rounded="lg" />
+              </AspectRatio> */}
+            </VStack>
+          </Container>
+        </section>
+        <section className="section-add-feedback">
+          <Container maxW={["container.md", null, null, null, "container.lg"]}>
+            <VStack spacing="8">
+              <Text
+                fontSize="4xl"
+                fontWeight="medium"
+                textAlign="center"
+                as="h2"
               >
-                View pricing
-              </Button>
-            </Box>
-          </Card>
-        </SimpleGrid>
-      </Container>
-      <Container py={[10, null, 20]}>
-        <Text
-          fontSize="4xl"
-          color="purple.400"
-          mb="20"
-          fontWeight="medium"
-          textAlign="center"
-        >
-          How it works: collect &amp; share design feedback easily
-        </Text>
-        <SimpleGrid columns={[1, null, 3]} spacing="10">
-          <Card p="4" bg="white" borderColor="cyan.500">
-            <Text fontSize="2xl" mb="6" display="flex" alignItems="center">
-              <Box
-                as="span"
-                rounded="full"
-                bg="cyan.400"
-                width="3rem"
-                minWidth="3rem"
-                height="3rem"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                color="white"
-                fontSize="2xl"
-                fontWeight="bold"
-                mr="3"
+                Say goodbye to email chains full of screenshots
+              </Text>
+              <Flex align="center" wrap="wrap" minW="100%">
+                <Box
+                  position="relative"
+                  zIndex="1"
+                  width={["100%", null, "66%"]}
+                >
+                  <Box rounded="lg" overflow="hidden" shadow="lg">
+                    <Img
+                      fluid={
+                        staticData.screenshotAddFeedback.childImageSharp.fluid
+                      }
+                    />
+                  </Box>
+                </Box>
+                <Box
+                  position="relative"
+                  zIndex="2"
+                  width={["100%", null, "33%"]}
+                >
+                  <Card
+                    position="relative"
+                    p="3"
+                    pl={[null, null, "5"]}
+                    marginTop={[null, null, "-2rem", "4rem"]}
+                    marginLeft={[null, null, "-3rem"]}
+                  >
+                    <Text fontWeight="bold" mb="3" fontSize="lg">
+                      Super simple feedback
+                    </Text>
+                    <Text fontSize="lg">
+                      It’s so easy, clients, designers & QA can leave feedback
+                      with ease.
+                      <br />
+                      <br />
+                      Screenshots and browser data are recorded so you don’t
+                      have to waste time asking questions!
+                    </Text>
+                    <CardDot alignment="left" />
+                  </Card>
+                </Box>
+              </Flex>
+            </VStack>
+          </Container>
+        </section>
+        <section className="section-add-project">
+          <Container maxW={["container.md", null, null, null, "container.lg"]}>
+            <VStack spacing="8">
+              <Text
+                fontSize="4xl"
+                fontWeight="medium"
+                textAlign="center"
+                as="h2"
               >
-                <MdAdd />
-              </Box>{" "}
-              Add your URL or design
-            </Text>
-            <Text fontSize="lg">
-              Enter your site URL, or upload your design.
-            </Text>
-          </Card>
-          <Card p="4" bg="white" borderColor="cyan.600">
-            <Text fontSize="2xl" mb="6" display="flex" alignItems="center">
-              <Box
-                as="span"
-                rounded="full"
-                bg="cyan.400"
-                width="3rem"
-                minWidth="3rem"
-                height="3rem"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                color="white"
-                fontSize="2xl"
-                fontWeight="bold"
-                mr="3"
+                No complicated setup, start getting feedback instantly
+              </Text>
+              <Flex align="center" wrap="wrap" minW="100%">
+                <Box
+                  position="relative"
+                  zIndex="1"
+                  width={["100%", null, "66%"]}
+                >
+                  <Box rounded="lg" overflow="hidden" shadow="lg">
+                    <Img
+                      fluid={
+                        staticData.screenshotAddProject.childImageSharp.fluid
+                      }
+                    />
+                  </Box>
+                </Box>
+                <Box
+                  position="relative"
+                  zIndex="2"
+                  width={["100%", null, "33%"]}
+                >
+                  <Card
+                    position="relative"
+                    p="3"
+                    pl={[null, null, "5"]}
+                    marginTop={[null, null, "-2rem", "4rem"]}
+                    marginLeft={[null, null, "-3rem"]}
+                  >
+                    <Text fontWeight="bold" mb="3" fontSize="lg">
+                      Get started in seconds
+                    </Text>
+                    <Text fontSize="lg">
+                      No code snippets or browser extensions. Just start getting
+                      feedback on your live site, dev site, staging site,
+                      anywhere!
+                    </Text>
+                    <CardDot alignment="left" />
+                  </Card>
+                </Box>
+              </Flex>
+            </VStack>
+          </Container>
+        </section>
+        <section className="section-board">
+          <Container maxW={["container.md", null, null, null, "container.lg"]}>
+            <VStack spacing="8">
+              <Box>
+                <Text
+                  fontSize="4xl"
+                  fontWeight="medium"
+                  textAlign="center"
+                  as="h2"
+                >
+                  Dedicated feedback board
+                </Text>
+                <Text fontSize="2xl" color="gray.500" textAlign="center">
+                  *Integrations coming soon
+                </Text>
+              </Box>
+
+              <Flex align="center" wrap="wrap" minW="100%">
+                <Box
+                  position="relative"
+                  zIndex="1"
+                  width={["100%", null, "66%"]}
+                >
+                  <Box rounded="lg" overflow="hidden" shadow="lg">
+                    <Img
+                      fluid={staticData.screenshotBoard.childImageSharp.fluid}
+                    />
+                  </Box>
+                </Box>
+                <Box
+                  position="relative"
+                  zIndex="2"
+                  width={["100%", null, "33%"]}
+                >
+                  <Card
+                    position="relative"
+                    p="3"
+                    pl={[null, null, "5"]}
+                    marginTop={[null, null, "-2rem", "4rem"]}
+                    marginLeft={[null, null, "-3rem"]}
+                  >
+                    <Text fontWeight="bold" mb="3" fontSize="lg">
+                      All your feedback: one place
+                    </Text>
+                    <Text fontSize="lg">
+                      Keep track of all your bugs and feedback in one place!
+                      Organise your board how you want.
+                    </Text>
+                    <CardDot alignment="left" />
+                  </Card>
+                </Box>
+              </Flex>
+            </VStack>
+          </Container>
+        </section>
+
+        <section className="section-board-feedback">
+          <Container maxW={["container.md", null, null, null, "container.lg"]}>
+            <VStack spacing="8">
+              <Text
+                fontSize="4xl"
+                fontWeight="medium"
+                textAlign="center"
+                as="h2"
               >
-                <MdShare />
-              </Box>{" "}
-              Share your Feedbackable URL or invite users
-            </Text>
-            <Text fontSize="lg">
-              Share your collaborative Feedbackable URL, or invite users by
-              email address.
-            </Text>
-          </Card>
-          <Card p="4" bg="white" borderColor="cyan.700">
-            <Text fontSize="2xl" mb="6" display="flex" alignItems="center">
-              <Box
-                as="span"
-                rounded="full"
-                bg="cyan.400"
-                width="3rem"
-                minWidth="3rem"
-                height="3rem"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                color="white"
-                fontSize="2xl"
-                fontWeight="bold"
-                mr="3"
+                Visual feedback with annotations
+              </Text>
+
+              <Flex align="center" wrap="wrap" minW="100%">
+                <Box
+                  position="relative"
+                  zIndex="1"
+                  width={["100%", null, "66%"]}
+                >
+                  <Box rounded="lg" overflow="hidden" shadow="lg">
+                    <Img
+                      fluid={
+                        staticData.screenshotBoardFeedback.childImageSharp.fluid
+                      }
+                    />
+                  </Box>
+                </Box>
+                <Box
+                  position="relative"
+                  zIndex="2"
+                  width={["100%", null, "33%"]}
+                >
+                  <Card
+                    position="relative"
+                    p="3"
+                    pl={[null, null, "5"]}
+                    marginTop={[null, null, "-2rem", "4rem"]}
+                    marginLeft={[null, null, "-3rem"]}
+                  >
+                    <Text fontWeight="bold" mb="3" fontSize="lg">
+                      Keep the whole team on the same page
+                    </Text>
+                    <Text fontSize="lg">
+                      Say goodbye to email chains, word docs and messages. With
+                      Feedbackable, your whole team can see the feedback, and
+                      clients can even add items!
+                    </Text>
+                    <CardDot alignment="left" />
+                  </Card>
+                </Box>
+              </Flex>
+            </VStack>
+          </Container>
+        </section>
+        <section className="section-who-for">
+          <Container maxW={["container.md", null, null, null, "container.lg"]}>
+            <VStack spacing="8">
+              <Text
+                fontSize="4xl"
+                fontWeight="medium"
+                textAlign="center"
+                as="h2"
               >
-                <GoCommentDiscussion />
-              </Box>{" "}
-              Collect design feedback
-            </Text>
-            <Text fontSize="lg">
-              Collect feedback from clients, designers &amp; QA. Easily track
-              all your feedback in one place.
-            </Text>
-          </Card>
-        </SimpleGrid>
-      </Container>
+                Feedbackable is for...
+              </Text>
+              <Text fontSize="lg" textAlign="center">
+                Feedbackable is designed for anyone who builds, develops,
+                designs or maintains websites or apps. Feedbackable is designed
+                to give you a tool to easily collect, organise &amp; manage
+                feedback from your clients, team and stakeholders.
+              </Text>
+              <SimpleGrid columns={[1, null, null, 2]} minW="100%" gap="4">
+                <Stack spacing="6">
+                  <FeedbackableForCard
+                    title="Web development agencies"
+                    content="Quit receiving Word documents full of screenshots and
+                        unactionable feedback."
+                  />
+                  <FeedbackableForCard
+                    title="New website builds"
+                    content="Make QA and user testing easier on new website builds.
+                        Manage stakeholder expectations and feedback easily."
+                  />
+                </Stack>
+                <Stack spacing="6">
+                  <FeedbackableForCard
+                    title="Marketing agencies"
+                    content="Making changes to landing pages is much easier with organised and
+          streamlined visual feedback."
+                  />
+                  <FeedbackableForCard
+                    title="Digital teams"
+                    content="Keep your whole team on the same page. Manage feedback from all stakeholders in one location."
+                  />
+                </Stack>
+              </SimpleGrid>
+            </VStack>
+          </Container>
+        </section>
+        <section className="">
+          <Container maxW={["container.md", null, null, null, "container.lg"]}>
+            <VStack spacing="8">
+              <SimpleGrid columns={[1, null, 3]} spacing="10">
+                <Box>
+                  <Text
+                    fontSize={["xl", null, "2xl"]}
+                    mb="4"
+                    textAlign="center"
+                  >
+                    Organised
+                  </Text>
+                  <Text fontSize="lg">
+                    All your feedback and bug reports in one place. Stop chasing
+                    emails, scribbled notes, text documents for the right
+                    feedback or piece of copy. Organise all your feedback in one
+                    board. *Coming soon: integrations!
+                  </Text>
+                </Box>
+                <Box>
+                  <Text
+                    fontSize={["xl", null, "2xl"]}
+                    mb="4"
+                    textAlign="center"
+                  >
+                    Simple
+                  </Text>
+                  <Text fontSize="lg">
+                    Zero click install! Simply enter your dev/staging/live site
+                    URL in the app and start collecting and dealing with
+                    feedback and bug reports in seconds. No code snippets, no
+                    browser extensions.
+                  </Text>
+                </Box>
+                <Box>
+                  <Text
+                    fontSize={["xl", null, "2xl"]}
+                    mb="4"
+                    textAlign="center"
+                  >
+                    Collaborative
+                  </Text>
+                  <Text fontSize="lg">
+                    Work collaboratively with your development & design teams,
+                    with private projects. Need feedback or bug reports from
+                    clients or even users? Collect feedback from unlimited
+                    guests.
+                  </Text>
+                </Box>
+              </SimpleGrid>
+            </VStack>
+          </Container>
+        </section>
+        <section className="section-final-cta">
+          <FooterCTA />
+        </section>
+      </VStack>
     </Layout>
   )
 }
 
 export default IndexPage
+
+function FeedbackableForCard({ title = "", content = "" }) {
+  return (
+    <Box rounded="lg" shadow="lg" p="6" position="relative" overflow="hidden">
+      <Box
+        position="absolute"
+        left="0"
+        top="0"
+        bg="purple.500"
+        w="4rem"
+        h="4rem"
+      />
+      <Box
+        position="absolute"
+        left="0"
+        top="0"
+        w="8rem"
+        h="8rem"
+        rounded="full"
+        top="0"
+        left="0"
+        bg="white"
+      />
+      <VStack spacing="6" align="start" position="relative">
+        <Text fontWeight="bold" fontSize="2xl">
+          {title}
+        </Text>
+        <Text fontSize="lg">{content}</Text>
+      </VStack>
+    </Box>
+  )
+}

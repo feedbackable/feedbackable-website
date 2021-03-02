@@ -3,9 +3,7 @@ import React, { useState, useEffect } from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 
-
 import { Text, Box, Heading, Stack, Container } from "@chakra-ui/react"
-import Background from "../components/Background"
 import Card from "../components/Card"
 
 const ContactPage = () => {
@@ -19,9 +17,8 @@ const ContactPage = () => {
   return (
     <Layout>
       <SEO title="Contact" />
-      <Background display={["none", null, "block"]} />
       <Container py={[10, null, 10]}>
-        <Text fontSize="4xl" color="purple.400" mb="6" fontWeight="medium">
+        <Text fontSize="4xl" mb="6" fontWeight="medium" textAlign="center">
           The feedback tool for web &amp; content
         </Text>
       </Container>
@@ -36,7 +33,7 @@ const ContactPage = () => {
               <Text fontSize="xl" fontWeight="bold">
                 Send me an email:
               </Text>
-              <Text color="purple.400" fontFamily="base" fontSize="2xl">
+              <Text color="purple.500" fontSize="2xl">
                 <a
                   href={`mailto:${renderedEmail}`}
                   data-subject="Hey Seb, I was checking out Feedbackable.io and..."
