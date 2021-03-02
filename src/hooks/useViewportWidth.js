@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 
 const useViewportWidth = () => {
   const getViewportWidth = () => {
+    if (typeof window === "undefined") return null
+
     let e = window,
       a = "inner"
     if (!("innerWidth" in window)) {
