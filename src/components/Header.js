@@ -1,68 +1,214 @@
-import React from "react"
-import { Box, Flex, Text, Stack, Button, Container } from "@chakra-ui/react"
+import React, { useEffect, useState } from "react"
+import {
+  Box,
+  Flex,
+  Text,
+  Stack,
+  Button,
+  Container,
+  IconButton,
+  useTheme,
+  Portal,
+  Fade,
+} from "@chakra-ui/react"
 import { Link } from "gatsby"
+import { MdClose } from "react-icons/md"
+import useViewportWidth from "../hooks/useViewportWidth"
+import { AiOutlineMenu } from "react-icons/ai"
+import {
+  LinkButtonStyle,
+  SolidButtonStyle,
+  OutlineButtonStyle,
+} from "./ButtonStyles"
 
-const Header = () => (
-  <Box as="header" py="4">
-    <Container>
-      <Flex
-        align="center"
-        justifyContent={["space-between", null, "flex-start"]}
+const menuItems = [
+  {
+    title: "How it works",
+    href: "/product",
+  },
+  {
+    title: "Pricing",
+    href: "/pricing",
+  },
+]
+
+const callToActions = [
+  {
+    title: "Learn more",
+    href: "/product",
+    variant: "outline",
+  },
+  {
+    title: "Sign up",
+    href: "/signup",
+    variant: "solid",
+  },
+  {
+    title: "Login",
+    href: "https://feedbackable.app",
+    variant: "link",
+  },
+]
+
+const Menu = ({ onClose = () => {} }) => {
+  return (
+    <Box
+      ml={["auto"]}
+      position={["fixed", null, null, "relative"]}
+      zIndex="1000"
+      bg="white"
+      w={["100%", null, null, "auto"]}
+      h={["100%", null, null, "auto"]}
+      top="0"
+      left="0"
+      p={[8, null, null, 0]}
+    >
+      <Box
+        position="absolute"
+        right="2"
+        top="6"
+        display={["block", null, null, "none"]}
       >
-        <Box>
-          <Link to="/" className="header-brand">
-            <Flex as="span" align="center">
-              <Box as="span" pr="4">
-                <svg
-                  width="2rem"
-                  viewBox="0 0 55 62"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M27.5 0C12.6459 0 0.540656 11.759 0 26.4686V35.4758C0.540656 50.1854 12.6459 61.9444 27.5 61.9444H55V35.4758V26.4686C54.4593 11.759 42.3541 0 27.5 0Z"
-                    fill="#DA49B4"
-                  />
-                  <path
-                    d="M27.5308 12.7778C18.6617 12.7778 11.4339 19.7846 11.1111 28.5494V29.1035H16.4791V28.7431C16.6957 22.851 21.5451 18.1409 27.4958 18.1409C33.4464 18.1409 38.2958 22.851 38.5124 28.7431V50.5556H48.0555V45.2715H43.9506V28.5494C43.6278 19.7846 36.3999 12.7778 27.5308 12.7778Z"
-                    fill="#F0F8FE"
-                  />
-                  <path
-                    d="M31.9445 34.3055C31.9445 36.8368 29.8925 38.8888 27.3612 38.8888C24.8299 38.8888 22.7778 36.8368 22.7778 34.3055C22.7778 31.7742 24.8299 29.7222 27.3612 29.7222C29.8925 29.7222 31.9445 31.7742 31.9445 34.3055Z"
-                    fill="#F0F8FE"
-                  />
-                </svg>
-              </Box>
-              <Text
-                fontSize="3xl"
-                color="purple.400"
-                fontWeight="bold"
-                letterSpacing="0.05rem;"
-                as="span"
-              >
-                Feedbackable
-              </Text>
-            </Flex>
-          </Link>
-        </Box>
-        <Box ml={[null, null, "20"]}>
-          <Stack isInline>
-            <Button
-              as={Link}
-              to="/pricing"
-              variant="link"
-              variantColor="purple"
-              fontWeight="normal"
-              className="header-pricing"
-              data-click-event="header-pricing"
-            >
-              Pricing
+        <IconButton
+          variant="ghost"
+          icon={<MdClose />}
+          onClick={onClose}
+          shadow="lg"
+          rounded="full"
+          fontSize="2xl"
+          size="lg"
+        />
+      </Box>
+      <Stack
+        spacing="8"
+        direction={["column", null, null, "row"]}
+        maxW={["xs", null, null, "100%"]}
+        mx="auto"
+      >
+        <Stack spacing="4" direction={["column", null, null, "row"]}>
+          {menuItems.map((item, index) => (
+            <Button key={index} as={Link} to={item.href} {...LinkButtonStyle}>
+              {item.title}
             </Button>
-          </Stack>
-        </Box>
-      </Flex>
-    </Container>
-  </Box>
-)
+          ))}
+        </Stack>
+        <Stack spacing="6" direction={["column", null, null, "row"]}>
+          {callToActions.map((item, index) => (
+            <Button
+              key={index}
+              as={item.href.match(/^https?:\/\//) ? "a" : Link}
+              to={item.href}
+              {...(item.variant === "link" && LinkButtonStyle)}
+              {...(item.variant === "outline" && OutlineButtonStyle)}
+              {...(item.variant === "solid" && SolidButtonStyle)}
+            >
+              {item.title}
+            </Button>
+          ))}
+        </Stack>
+      </Stack>
+    </Box>
+  )
+}
+
+const Header = () => {
+  const [isNavOpen, setIsNavOpen] = useState(false)
+
+  const viewportWidth = useViewportWidth()
+  const theme = useTheme()
+
+  const [breakpoints, setBreakpoints] = useState()
+
+  useEffect(() => {
+    const testEl = document.createElement("div")
+    testEl.style.opacity = 0
+    document.body.appendChild(testEl)
+    const _breakpoints = Object.keys(theme.breakpoints)
+      .filter(k => ["sm", "md", "lg", "xl"].includes(k))
+      .reduce((obj, k) => {
+        testEl.style.width = theme.breakpoints[k]
+        return { ...obj, [k]: parseFloat(getComputedStyle(testEl).width) }
+      }, {})
+    testEl.remove()
+    setBreakpoints(_breakpoints)
+  }, [])
+
+  useEffect(() => {
+    if (breakpoints && viewportWidth > breakpoints?.lg && isNavOpen) {
+      setIsNavOpen(false)
+    }
+  }, [viewportWidth])
+
+  return (
+    <Box as="header" py="6">
+      <Container>
+        <Flex
+          align="center"
+          justifyContent={["space-between", null, "flex-start"]}
+        >
+          <Box>
+            <Link to="/" className="header-brand">
+              <Flex as="span" align="center">
+                <Box as="span" pr="4">
+                  <svg
+                    width="2.5rem"
+                    viewBox="0 0 303 303"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M152 40C98.5254 40 54.9464 82.3325 53 135.287V167.713C54.9464 220.668 98.5254 263 152 263H251V167.713V135.287C249.054 82.3325 205.475 40 152 40Z"
+                      fill="#943BDC"
+                    />
+                    <path
+                      d="M152.111 86C120.182 86 94.1621 111.224 93 142.778V144.772H112.325V143.475C113.105 122.263 130.563 105.307 151.985 105.307C173.407 105.307 190.865 122.263 191.645 143.475V222H226V202.977H211.222V142.778C210.06 111.224 184.04 86 152.111 86Z"
+                      fill="#F0F8FE"
+                    />
+                    <path
+                      d="M168 163.5C168 172.613 160.613 180 151.5 180C142.387 180 135 172.613 135 163.5C135 154.387 142.387 147 151.5 147C160.613 147 168 154.387 168 163.5Z"
+                      fill="#F0F8FE"
+                    />
+                  </svg>
+                </Box>
+                <Text
+                  fontSize="lg"
+                  fontWeight="bold"
+                  letterSpacing="0.05rem;"
+                  as="span"
+                >
+                  Feedbackable
+                </Text>
+              </Flex>
+            </Link>
+          </Box>
+          <Box ml="auto" display={["block", null, null, "none"]}>
+            <IconButton
+              variant="ghost"
+              icon={<AiOutlineMenu />}
+              rounded="full"
+              shadow="lg"
+              fontSize="2xl"
+              size="lg"
+              onClick={() => setIsNavOpen(!isNavOpen)}
+            />
+          </Box>
+          {breakpoints && viewportWidth <= breakpoints?.lg && (
+            <>
+              {isNavOpen && (
+                <Portal>
+                  <Fade in={isNavOpen}>
+                    <Menu onClose={() => setIsNavOpen(false)} />
+                  </Fade>
+                </Portal>
+              )}
+            </>
+          )}
+          {(typeof window === "undefined" ||
+            viewportWidth > breakpoints?.lg) && <Menu />}
+        </Flex>
+      </Container>
+    </Box>
+  )
+}
 
 export default Header
